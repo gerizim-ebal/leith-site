@@ -1,0 +1,371 @@
+/* =============================================
+   DESIGN TOKENS
+   ============================================= */
+:root {
+  --color-bg:         #ffffff;
+  --color-bg-alt:     #f7f7f5;
+  --color-text:       #1a1a1a;
+  --color-text-muted: #5a5a5a;
+  --color-accent:     #1f6feb;   /* swap this for your brand colour */
+  --color-accent-dark:#174fa1;
+  --color-border:     #e0e0e0;
+
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+
+  --radius:    8px;
+  --max-width: 1100px;
+
+  --transition: 0.2s ease;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* =============================================
+   HEADER / NAV
+   ============================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-list {
+  display: none;   /* hidden on mobile, toggled by JS */
+  list-style: none;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.nav-list a {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav-list a:hover { color: var(--color-accent); text-decoration: none; }
+
+/* Hamburger button */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Open state */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav open */
+.nav-open .nav-list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-sm);
+  gap: var(--space-sm);
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  padding-block: var(--space-xl) var(--space-lg);
+  background: var(--color-bg-alt);
+  text-align: center;
+}
+
+.hero-inner h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.2;
+  max-width: 780px;
+  margin-inline: auto;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+}
+
+/* =============================================
+   SERVICES
+   ============================================= */
+.services {
+  padding-block: var(--space-lg);
+}
+
+.services h2,
+.about h2,
+.contact h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: var(--space-md);
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+.service-card {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-xs);
+}
+
+.service-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* =============================================
+   ABOUT
+   ============================================= */
+.about {
+  padding-block: var(--space-lg);
+  background: var(--color-bg-alt);
+}
+
+.about-inner {
+  max-width: 680px;
+}
+
+.about-text p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+/* =============================================
+   CONTACT
+   ============================================= */
+.contact {
+  padding-block: var(--space-lg);
+}
+
+.contact-intro {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.contact-inner {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+.contact-details p {
+  margin-bottom: var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.contact-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: var(--space-xs);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  transition: border-color var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.contact-form button {
+  margin-top: var(--space-sm);
+  align-self: flex-start;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-md);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (640px+)
+   ============================================= */
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — DESKTOP (768px+)
+   ============================================= */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-md);
+  }
+
+  .nav-list {
+    display: flex;   /* always visible on desktop */
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
