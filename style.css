@@ -249,6 +249,7 @@ a:hover { text-decoration: underline; }
 .service-icon {
   font-size: 2rem;
   margin-bottom: var(--space-xs);
+  color: var(--color-accent);
 }
 
 .service-card h3 {
