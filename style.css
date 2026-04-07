@@ -271,7 +271,32 @@ a:hover { text-decoration: underline; }
 }
 
 .about-inner {
-  max-width: 680px;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.about-photo {
+  flex-shrink: 0;
+}
+
+.profile-photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 4px solid var(--color-primary, #2563eb);
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .about-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .about-text p {
